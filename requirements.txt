@@ -1,0 +1,7 @@
+pandas==0.25.1
+numpy==1.17.2
+dataclasses==0.7
+keras==2.3.1
+Pillow==7.0.0
+streamlit==0.56.0
+opencv-python
