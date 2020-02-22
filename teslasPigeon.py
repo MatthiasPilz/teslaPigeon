@@ -2,7 +2,8 @@ import streamlit as st
 import utility as ut
 import detection
 import explore
-import detection_simplified
+
+from PIL import Image
 
 ########################################################################################################################
 # main function
@@ -14,18 +15,19 @@ def main():
 ########################################################################################################################
 def select_operationMode():
     operationMode = st.sidebar.radio( "Please select the operation mode:",
-                                      ("Camera", "Badges", "My Collection", "Explore", "Alternative"))
+                                      ("Camera", "Badges", "My Collection", "Explore"))
 
     if operationMode == "Camera":
         detection.run()
     elif operationMode == "Badges":
-        pass
+        badgeFake = Image.open('./data/thumbnail_AppDummy1.png')
+        st.image(badgeFake, use_column_width=True)
     elif operationMode == "My Collection":
         pass
     elif operationMode == "Explore":
         explore.run()
-    elif operationMode == "Alternative":
-        detection_simplified.run()
+    #elif operationMode == "Alternative":
+        #detection_simplified.run()
 
 
 ########################################################################################################################
