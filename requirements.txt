@@ -1,0 +1,2 @@
+dataclasses==0.7
+streamlit==0.56.0
