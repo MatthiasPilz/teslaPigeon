@@ -10,9 +10,6 @@ from keras.applications.vgg16 import decode_predictions
 from keras.applications.vgg16 import VGG16
 
 def run():
-    ut.show_title("picture upload")
-
-    st.markdown("*Please select the file type:*")
     imgFileBuffer = st.file_uploader("Select an image", type=["png", "jpg", "jpeg"])
     if st.button("run demonstration"):
         if imgFileBuffer is not None:
