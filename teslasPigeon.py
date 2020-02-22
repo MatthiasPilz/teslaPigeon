@@ -1,6 +1,6 @@
 import streamlit as st
 import utility as ut
-#import detection
+import detection
 import explore
 import detection_simplified
 
@@ -17,8 +17,7 @@ def select_operationMode():
                                       ("Camera", "Badges", "My Collection", "Explore", "Alternative"))
 
     if operationMode == "Camera":
-        pass
-        #detection.run()
+        detection.run()
     elif operationMode == "Badges":
         pass
     elif operationMode == "My Collection":

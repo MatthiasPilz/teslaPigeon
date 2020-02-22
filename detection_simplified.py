@@ -16,7 +16,7 @@ def run():
 	filename = file_selector()
 	if st.button("run demonstration"):
 		# load the input image from disk
-		image = cv2.imread(filename)
+		image = cv2.imread(filename)[...,::-1]
 		st.image(image, caption='Uploaded Image.', use_column_width=True)
 		with st.spinner("classifying image..."):
 			label = predict(image)
@@ -24,7 +24,8 @@ def run():
 
 def predict(image):
 	with open('class_list.txt', 'r') as file:
-		classes = file.read().split()
+		classes = file.read().split(",")
+		print(classes)
 
 	blob = cv2.dnn.blobFromImage(image, 1, (224, 224))
 	net = cv2.dnn.readNetFromCaffe("bvlc_googlenet.prototxt", "bvlc_googlenet.caffemodel")
