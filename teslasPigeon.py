@@ -1,7 +1,8 @@
 import streamlit as st
 import utility as ut
-import detection
-
+#import detection
+import explore
+import detection_simplified
 
 ########################################################################################################################
 # main function
@@ -13,16 +14,19 @@ def main():
 ########################################################################################################################
 def select_operationMode():
     operationMode = st.sidebar.radio( "Please select the operation mode:",
-                                      ("Camera", "Badges", "My Collection", "Explore"))
+                                      ("Camera", "Badges", "My Collection", "Explore", "Alternative"))
 
     if operationMode == "Camera":
-        detection.run()
+        pass
+        #detection.run()
     elif operationMode == "Badges":
         pass
     elif operationMode == "My Collection":
         pass
     elif operationMode == "Explore":
-        pass
+        explore.run()
+    elif operationMode == "Alternative":
+        detection_simplified.run()
 
 
 ########################################################################################################################

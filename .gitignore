@@ -1,2 +1,5 @@
 __pycache__
 .idea
+gitTest.py
+synset_words.txt
+file_reader.py
