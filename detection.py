@@ -8,6 +8,13 @@ from keras.preprocessing.image import img_to_array
 from keras.applications.vgg16 import preprocess_input
 from keras.applications.vgg16 import decode_predictions
 from keras.applications.vgg16 import VGG16
+from keras.applications.nasnet import NASNetMobile
+from keras.applications.nasnet import preprocess_input
+from keras.applications.nasnet import decode_predictions
+
+from keras.applications.mobilenet_v2 import MobileNetV2
+from keras.applications.mobilenet_v2 import preprocess_input
+from keras.applications.mobilenet_v2 import decode_predictions
 
 def run():
     imgFileBuffer = st.file_uploader("Select an image", type=["png", "jpg", "jpeg"])
@@ -22,7 +29,9 @@ def run():
             st.markdown(result)
 
 def predict(inputFile):
-    model = VGG16()
+    #model = VGG16()
+    #model = NASNetMobile()
+    model = MobileNetV2()
     image = load_img(inputFile, target_size=(224, 224))
     # convert the image pixels to a numpy array
     image = img_to_array(image)
