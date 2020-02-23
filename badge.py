@@ -18,7 +18,7 @@ def run():
         badgeComplete = Image.open('./data/badgeComplete.png')
         ph1.image(badgeComplete, use_column_width=True)
 
-        time.sleep(2)
+        time.sleep(3)
         badgeBeatrix = Image.open('./data/beatrix.png')
         ph1.image(badgeBeatrix, use_column_width=True)
 
