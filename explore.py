@@ -16,6 +16,7 @@ def run():
         user_input = st.text_input("enter plant")
 
     start_loc=[51.5262, -0.1607]
+    regent_loc=[51.5313, -0.1570]
     zoo_loc = [51.5353,-0.1534]
 
     lower_str=user_input.lower()
@@ -31,10 +32,10 @@ def run():
     elif lower_str == 'pigeon' or lower_str == 'rat' or lower_str == 'grass':
         n = randint(200,500)
         df = pd.DataFrame(
-            np.random.randn(n, 2) / [100, 100] + start_loc, columns=['lat', 'lon'])
+            np.random.randn(n, 2) / [300, 300] + regent_loc, columns=['lat', 'lon'])
         st.map(df) 
     else:
         n = randint(10,70)
         df = pd.DataFrame(
-            np.random.randn(n, 2) / [100, 100] + start_loc, columns=['lat', 'lon'])
+            np.random.randn(n, 2) / [300, 300] + regent_loc, columns=['lat', 'lon'])
         st.map(df)
