@@ -53,6 +53,7 @@ def run():
             ph3.image(image_badge, use_column_width=True)
             time.sleep(5)
             ph3.image(image, use_column_width=True)
+            ut.state.flag_rareComplete = True
 
 
 

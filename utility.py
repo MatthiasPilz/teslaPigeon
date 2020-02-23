@@ -42,10 +42,12 @@ from dataclasses import dataclass
 class MyState:
     flag_todo: bool
     flag_rerunMap: bool
+    flag_rareComplete: bool
 
 def setup() -> MyState:
     return MyState( flag_todo = False,
-                    flag_rerunMap = False)
+                    flag_rerunMap = False,
+                    flag_rareComplete = False)
 
 state = get_state(setup)
 
@@ -61,6 +63,7 @@ def button_resetAllStates(k, place):
 def reset_allStates():
     state.flag_todo = False
     state.flag_rerunMap = False
+    state.flag_rareComplete = False
 
 
 ########################################################################################################################
