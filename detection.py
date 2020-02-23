@@ -41,20 +41,28 @@ def run():
         label = predict(imgFileBuffer)
         result = str(label[1])
 
-        ## hardcoded event for spotting a jay
-        if result == "jay":
-            st.balloons()
-            ph4.success("YOU FOUND A JAY!")
+        if label[0][:8] > "n02655020":
+            st.warning("Careful, you might be off-track buddy :)")
+            st.warning("We give you the wiki page anyway :P")
+        else:
 
-        if result == "magpie":
-            st.balloons()
-            ph4.success("YOU FOUND A MAGPIE!")
-            image_badge = cv2.imread("./data/NotARobin_NewBadge.png")[...,::-1]
-            ph3.image(image_badge, use_column_width=True)
-            time.sleep(5)
-            ph3.image(image, use_column_width=True)
-            ut.state.flag_rareComplete = True
+            ## hardcoded event for spotting a jay
+            if result == "jay":
+                st.balloons()
+                ph4.success("YOU FOUND A JAY!")
 
+            if result == "magpie":
+                if not ut.state.flag_rareComplete:
+                    st.balloons()
+                    ph4.success("YOU FOUND A MAGPIE!")
+                    image_badge = cv2.imread("./data/NotARobin_NewBadge.png")[...,::-1]
+                    ph3.image(image_badge, use_column_width=True)
+                    time.sleep(5)
+                    ph3.image(image, use_column_width=True)
+                    ut.state.flag_rareComplete = True
+                else:
+                    st.warning("You already collected a magpie.")
+                    ph3.image(image, use_column_width=True)
 
 
         ## retrieve wiki info
