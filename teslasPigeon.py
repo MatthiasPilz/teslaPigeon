@@ -2,8 +2,7 @@ import streamlit as st
 import utility as ut
 import detection
 import explore
-
-from PIL import Image
+import badge
 
 ########################################################################################################################
 # main function
@@ -20,8 +19,7 @@ def select_operationMode():
     if operationMode == "Camera":
         detection.run()
     elif operationMode == "Badges":
-        badgeFake = Image.open('./data/thumbnail_AppDummy1.png')
-        st.image(badgeFake, use_column_width=True)
+        badge.run()
     elif operationMode == "My Collection":
         pass
     elif operationMode == "Explore":

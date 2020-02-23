@@ -49,9 +49,10 @@ def run():
         if result == "magpie":
             st.balloons()
             ph4.success("YOU FOUND A MAGPIE!")
-            image_badge = cv2.imread("./data/panda.jpg")[...,::-1]
-            ph5.image(image_badge, use_column_width=True)
+            image_badge = cv2.imread("./data/NotARobin_NewBadge.png")[...,::-1]
+            ph3.image(image_badge, use_column_width=True)
             time.sleep(5)
+            ph3.image(image, use_column_width=True)
 
 
 
