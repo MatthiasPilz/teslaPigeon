@@ -7,7 +7,7 @@ from PIL import Image
 def run():
     ph1 = st.empty()
 
-    if ut.state.flag_rareComplete:
+    if not ut.state.flag_rareComplete:
         badgeEmpty = Image.open('./data/badgePending.png')
         ph1.image(badgeEmpty, use_column_width=True)
 
@@ -22,7 +22,3 @@ def run():
         badgeBeatrix = Image.open('./data/beatrix.png')
         ph1.image(badgeBeatrix, use_column_width=True)
 
-
-
-
-    ph1.image(badgeFake, use_column_width=True)
