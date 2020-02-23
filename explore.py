@@ -15,19 +15,13 @@ def run():
     elif q == "Plants":
         user_input = st.text_input("enter plant")
 
-
     if user_input == "":
         df = pd.DataFrame(
-            np.random.randn(1, 2) / [250, 250] + [51.52903, -0.155], columns=['lat', 'lon'])
-        st.map(df, zoom = 14)
-    elif user_input == "Regents Park":
-        n = randint(10,100)
-        df = pd.DataFrame(
-            np.random.randn(n, 2) / [250, 250] + [51.52903, -0.155], columns=['lat', 'lon'])
+            np.array([[51.52903, -0.155  ]]), columns=['lat', 'lon'])
         st.map(df, zoom = 14)
     else:
         n = randint(10,100)
 
         df = pd.DataFrame(
             np.random.randn(n, 2) / [300, 300] + [51.52903, -0.155], columns=['lat', 'lon'])
-        st.map(df, zoom = 14)
+        st.map(df)
