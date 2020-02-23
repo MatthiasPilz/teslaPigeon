@@ -5,18 +5,28 @@ import numpy as np
 import pydeck as pdk
 
 def run():
-    user_input = st.text_input("enter location")
+    q = st.selectbox("What are you looking for?", ("Locations", "Animals", "Plants"))
+    user_input = ""
+    if q == "Locations":
+        user_input = st.text_input("enter location")
+    elif q == "Animals":
+        user_input = st.text_input("enter animal")
+    elif q == "Plants":
+        user_input = st.text_input("enter plant")
 
     if user_input == "":
         st.map()
     elif user_input == "Regents Park":
         df = pd.DataFrame(
-            np.random.randn(40, 2) / [250, 250] + [51.52803, -0.155], columns=['lat', 'lon'])
-
+            np.random.randn(40, 2) / [250, 250] + [51.52903, -0.155], columns=['lat', 'lon'])
+        st.map(df, zoom = 14)
+    elif user_input == "Magpie":
+        df = pd.DataFrame(
+            np.random.randn(20, 2) / [300, 300] + [51.52903, -0.155], columns=['lat', 'lon'])
         st.map(df, zoom = 14)
     elif user_input == "test":
         df = pd.DataFrame(
-            np.random.randn(40, 2) / [250, 250] + [51.52803, -0.155])
+            np.random.randn(40, 2) / [250, 250] + [51.52903, -0.155])
         st.pydeck_chart(pdk.Deck(
         map_style = 'mapbox://styles/mapbox/light-v9',
         initial_view_state = pdk.ViewState(
