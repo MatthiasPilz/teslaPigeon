@@ -2,23 +2,25 @@ import utility as ut
 import streamlit as st
 import cv2
 import time
-
 import wikipediaapi
-
 from PIL import Image
+import os
 
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
+from keras.applications.mobilenet_v2 import MobileNetV2
+from keras.applications.mobilenet_v2 import preprocess_input
+from keras.applications.mobilenet_v2 import decode_predictions
+
+'''
 from keras.applications.vgg16 import preprocess_input
 from keras.applications.vgg16 import decode_predictions
 from keras.applications.vgg16 import VGG16
 from keras.applications.nasnet import NASNetMobile
+from keras.applications.nasnet import NASNetLarge
 from keras.applications.nasnet import preprocess_input
 from keras.applications.nasnet import decode_predictions
-
-from keras.applications.mobilenet_v2 import MobileNetV2
-from keras.applications.mobilenet_v2 import preprocess_input
-from keras.applications.mobilenet_v2 import decode_predictions
+'''
 
 def run():
     ph1 = st.empty()
@@ -29,7 +31,7 @@ def run():
     ph6 = st.empty()
     ph7 = st.empty()
 
-    wiki_wiki = wikipediaapi.Wikipedia('en')
+    os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
     imgFileBuffer = ph1.file_uploader("Select an image", type=["png", "jpg", "jpeg"])
     if imgFileBuffer is not None:
@@ -41,11 +43,11 @@ def run():
         label = predict(imgFileBuffer)
         result = str(label[1])
 
+    ## give special message if identification gives non-living object
         if label[0][:8] > "n02655020":
             st.warning("Careful, you might be off-track buddy :)")
             st.warning("We give you the wiki page anyway :P")
         else:
-
             ## hardcoded event for spotting a jay
             if result == "jay":
                 st.balloons()
@@ -66,6 +68,7 @@ def run():
 
 
         ## retrieve wiki info
+        wiki_wiki = wikipediaapi.Wikipedia('en')
         page_py = wiki_wiki.page(result)
         content_title = "**" + page_py.title.capitalize() + "**"
         ph5.markdown(content_title)
@@ -79,8 +82,6 @@ def run():
 
 
 def predict(inputFile):
-    #model = VGG16()
-    #model = NASNetMobile()
     model = MobileNetV2()
     image = load_img(inputFile, target_size=(224, 224))
     # convert the image pixels to a numpy array

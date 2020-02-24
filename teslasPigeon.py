@@ -30,10 +30,7 @@ def select_operationMode():
 
 ########################################################################################################################
 if __name__ == "__main__":
-    # TODO for the final version this is supposed to be set to FALSE!!!
-    menuFlag = False
-    ut.show_menu( menuFlag )
-
+    ut.show_menu( False )
     main()
 
 
