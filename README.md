@@ -4,7 +4,7 @@ our little app from HackLBS2020 in its browser version...
 ## what
 the team consisted of:
 - Rhys Feeney (Idea generator and Financial Planning Analyst
-- Claire Wu (Developer and Product Manager)
+- Claire Wu (Developer and Product Manager) --> [https://github.com/ClaireBee]
 - Johanna Mader (Subject Expert and Designer)
 - Matthias Pilz (Developer and Researcher)
 
